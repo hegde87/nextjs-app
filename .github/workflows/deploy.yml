@@ -2,7 +2,7 @@
 name: Deploy
 
 on:
-  push:
+  push: # any time there is direct merging happening with the Main Branch that is when we want these jobs to execute 
     branches: [ "main" ]
 
 jobs:
@@ -13,6 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: docker build . -t harishneel/next-js-app
+    - run: docker build . -t sagarh1987/next-js-app
     - run: echo "${{secrets.DOCKERHUB_PASSWORD}}" | docker login -u ${{secrets.DOCKERHUB_USERNAME}} --password-stdin 
-    - run: docker push harishneel/next-js-app:latest
+    - run: docker push sagarh1987/next-js-app:latest
+
+
+ 
